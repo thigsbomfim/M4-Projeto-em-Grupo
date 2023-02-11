@@ -22,7 +22,7 @@ CREATE TABLE games (
   game_id INT PRIMARY KEY AUTO_INCREMENT,
   home_team_id INT,
   visitor_team_id INT,
-  game_date_est DATETIME,
+  game_date_est DATE,
   pts_home INT,
   fg_pct_home DECIMAL(5,3),
   ft_pct_home DECIMAL(5,3),
@@ -584,6 +584,31 @@ SELECT city, w
 FROM ranking
 JOIN teams ON ranking.team_id = teams.team_id
 ORDER BY w DESC
+LIMIT 4;
+
+-- Qual é o time com o melhor recorde geral na temporada?
+SELECT team, w, l, w_pct
+FROM ranking
+ORDER BY w_pct DESC
+LIMIT 4;
+
+-- Qual é o jogador com o maior número de pontos em um jogo específico?
+SELECT player_name, pts
+FROM games_details
+ORDER BY pts DESC
+LIMIT 4;
+
+
+-- Qual é o time com o melhor desempenho em casa na temporada?
+SELECT team, home_record
+FROM ranking
+ORDER BY home_record DESC
+LIMIT 4;
+
+-- Qual é o time com o pior desempenho como visitante na temporada?
+SELECT team, road_record
+FROM ranking
+ORDER BY road_record ASC
 LIMIT 4;
 
 
