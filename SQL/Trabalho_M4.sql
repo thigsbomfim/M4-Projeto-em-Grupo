@@ -24,15 +24,15 @@ CREATE TABLE games (
   visitor_team_id INT,
   game_date_est DATETIME,
   pts_home INT,
-  fg_pct_home DECIMAL(9,4),
-  ft_pct_home DECIMAL(9,4),
-  fg3_cpt_home DECIMAL(9,4),
+  fg_pct_home DECIMAL(5,3),
+  ft_pct_home DECIMAL(5,3),
+  fg3_cpt_home DECIMAL(5,3),
   ast_home INT,
   reb_home INT,
   pts_away INT,
-  fg_pct_away DECIMAL(9,4),
-  ft_pct_away DECIMAL(9,4),
-  fg3_pct_away DECIMAL(9,4),
+  fg_pct_away DECIMAL(5,3),
+  ft_pct_away DECIMAL(5,3),
+  fg3_pct_away DECIMAL(5,3),
   ast_away INT,
   reb_away INT,
   home_team_wins INT,
@@ -49,11 +49,11 @@ CREATE TABLE games_details (
   team_city VARCHAR (255),
   player_name VARCHAR(255),
   fgm INT,
-  fg_pct DECIMAL(9,4),
+  fg_pct DECIMAL(5,3),
   fg3m INT,
-  fg3_pct DECIMAL(9,4),
+  fg3_pct DECIMAL(5,3),
   ftm INT,
-  ft_pct DECIMAL(9,4),
+  ft_pct DECIMAL(5,3),
   reb INT,
   ast INT,
   stl INT,
@@ -74,7 +74,7 @@ CREATE TABLE ranking (
   g INT,
   w INT,
   l INT,
-  w_pct DECIMAL(9,4),
+  w_pct DECIMAL(5,3),
   home_record VARCHAR(100),
   road_record VARCHAR(100),
   FOREIGN KEY (team_id) REFERENCES teams (team_id)
@@ -495,6 +495,7 @@ INSERT INTO games_details (
 ('1610612740','21900900','148','NOP','New Orleans','Jahlil Okafor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('1610612740','21900900','149','NOP','New Orleans','JJ Redick', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
+
 INSERT INTO ranking (
   team_id,
   conference,
@@ -556,4 +557,33 @@ INSERT INTO ranking (
 ('1610612746', 'West', 'LA Clippers', '58', '39', '19', '0.672', '23/jun', '16-13'),
 ('1610612745', 'West', 'Houston', '58', '38', '20', '0.655', '21/ago', '17/dez'),
 ('1610612760', 'West', 'Oklahoma City', '59', '37', '22', '0.627', '20/dez', '17/out');
+
+
+-- Consultas
+
+-- Qual é o jogador com o melhor percentual de arremessos de três pontos em um jogo específico?
+SELECT player_name, fg3_pct
+FROM games_details
+ORDER BY fg3_pct DESC
+LIMIT 4;
+
+-- Qual é o jogador com o maior número de rebotes em um jogo específico?
+SELECT player_name, reb
+FROM games_details
+ORDER BY reb DESC
+LIMIT 4;
+
+-- Qual é a data do jogo com o maior número de pontos marcados por ambos os times?
+SELECT game_date_est, pts_home + pts_away AS total_pts
+FROM games
+ORDER BY total_pts DESC
+LIMIT 4;
+
+-- Qual é a cidade com o time com o maior número de vitórias na temporada?
+SELECT city, w
+FROM ranking
+JOIN teams ON ranking.team_id = teams.team_id
+ORDER BY w DESC
+LIMIT 4;
+
 
