@@ -84,11 +84,11 @@ CREATE TABLE ranking (
 -- inserção de dados 
 
 INSERT INTO teams (
-	team_id,
-	abbreviation,
-	nickname,
-	yearfounded,
-	city
+  team_id,
+  abbreviation,
+  nickname,
+  yearfounded,
+  city
 ) VALUES  
 ('1610612737','ATL','Hawks','1949','Atlanta'),
 ('1610612738','BOS','Celtics','1946','Boston'),
@@ -496,15 +496,15 @@ INSERT INTO games_details (
 ('1610612740','21900900','149','NOP','New Orleans','JJ Redick', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 INSERT INTO ranking (
-	team_id,
-    conference,
-    team,
-    g,
-    w,
-    l,
-    w_pct,
-    home_record,
-    road_record
+  team_id,
+  conference,
+  team,
+  g,
+  w,
+  l,
+  w_pct,
+  home_record,
+  road_record
 ) VALUES 
 ('1610612747', 'West', 'L.A. Lakers', '59', '46', '13', '0.78', '21/jul', '25/jun'),
 ('1610612743', 'West', 'Denver', '60', '41', '19', '0.683', '24/jul', '17/dez'),
