@@ -70,6 +70,6 @@ Após a realização da extração e das consultas realizadas, importamos as con
 
 ## :bouncing_ball_person: Desenvolvedores:
 
-![e1f802b2-5eba-42dc-b23a-a4a0dc4c862e](https://user-images.githubusercontent.com/113690639/218385112-dc64fab1-a527-42dd-a51b-89ec1d3c3c76.jpg)
+![e1f802b2-5eba-42dc-b23a-a4a0dc4c862e](https://user-images.githubusercontent.com/113690639/218385112-dc64fab1-a527-42dd-a51b-89ec1d3c3c76.jpg).
 
 
